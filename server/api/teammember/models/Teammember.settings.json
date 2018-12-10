@@ -1,0 +1,35 @@
+{
+  "connection": "default",
+  "collectionName": "",
+  "info": {
+    "name": "teammember",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "Name": {
+      "default": "",
+      "type": "string",
+      "required": true
+    },
+    "Bio": {
+      "default": "",
+      "type": "text",
+      "required": true
+    },
+    "Image": {
+      "model": "file",
+      "via": "related",
+      "plugin": "upload",
+      "required": true
+    },
+    "Linkedin": {
+      "default": "",
+      "type": "string"
+    }
+  }
+}

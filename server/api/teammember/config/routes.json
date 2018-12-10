@@ -1,0 +1,76 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/teammembers",
+      "handler": "Teammember.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/teammembers/count",
+      "handler": "Teammember.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/teammembers/:id",
+      "handler": "Teammember.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/teammembers",
+      "handler": "Teammember.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/teammembers/:id",
+      "handler": "Teammember.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/teammembers/:id",
+      "handler": "Teammember.destroy",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/teammembers/:id/relationships/:relation",
+      "handler": "Teammember.createRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/teammembers/:id/relationships/:relation",
+      "handler": "Teammember.updateRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/teammembers/:id/relationships/:relation",
+      "handler": "Teammember.destroyRelation",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

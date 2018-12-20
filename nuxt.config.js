@@ -1,6 +1,24 @@
 const pkg = require("./package");
+import axios from "axios";
+import slugify from "slugify";
 
 module.exports = {
+  generate: {
+    routes: function() {
+      return axios
+        .get(
+          "http://dev-webscope-api.pantheonsite.io/jsonapi/node/article?fields[node--article]=title"
+        )
+        .then(res => {
+          return res.data.data.map(post => {
+            const slug = slugify(post.attributes.title, {
+              lower: true
+            });
+            return "/posts/" + slug;
+          });
+        });
+    }
+  },
   mode: "spa",
 
   /*
@@ -29,7 +47,7 @@ module.exports = {
   /*
   ** Plugins to load before mounting the App
   */
-  plugins: [],
+  plugins: ["~plugins/filters.js"],
 
   /*
   ** Nuxt.js modules

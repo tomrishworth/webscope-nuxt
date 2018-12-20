@@ -2,48 +2,28 @@
   <section class="container">
     <div>
       <p>Homepage</p>
-      {{ teamMembers}}
+      <post-teaser v-for="post in posts.data" :key="post.id" :id="post.id"></post-teaser>
     </div>
   </section>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import PostTeaser from "@/components/Blog/PostTeaser.vue";
 
 export default {
-  data() {
-    return {
-      query: ""
-    };
+  async fetch({ store, params }) {
+    await store.dispatch("getPosts");
+  },
+  components: {
+    PostTeaser
   },
   computed: {
-    teamMembers() {
-      return this.$store.getters["teamMembers/list"];
+    posts() {
+      return this.$store.getters.allPosts;
     }
-    // ...mapGetters(["teamMembers"])
-  },
-  mounted() {
-    this.$store.dispatch("teamMembers/getTeamMembers");
   }
-  // async fetch({ store }) {
-  //   const response = await strapi.request("post", "/graphql", {
-  //     data: {
-  //       query: `query {
-  //         teammembers {
-  //           id
-  //           Name
-  //           Bio
-  //         }
-  //       }
-  //       `
-  //     }
-  //   });
-  //   console.log(response);
-  //   response.data.teamMembers.forEach(teamMember => {
-  //     store.commit('team')
-  //   })
-  // }
 };
 </script>
+
 
 

@@ -1,0 +1,131 @@
+// Containers
+
+.container-sm {
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section-padding {
+  padding-left: 50px;
+  padding-right: 50px;
+  @include media-breakpoint-up(sm) {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+}
+
+// Colors
+
+.text-subtle {
+  color: $text-subtle;
+}
+
+// Font sizes
+
+.text-xs {
+  font-size: $text-xs;
+}
+
+.text-sm {
+  font-size: $text-sm;
+}
+
+.text-base {
+  font-size: $text-base;
+}
+
+.text-md {
+  font-size: $text-md;
+}
+
+.text-lg {
+  font-size: $text-lg;
+}
+
+.text-xl {
+  font-size: $text-xl;
+}
+
+// Line Height
+.line-height-none {
+  line-height: 1;
+}
+
+.line-height-tight {
+  line-height: 1.25;
+}
+
+.line-height-normal {
+  line-height: 1.5;
+}
+
+.line-height-loose {
+  line-height: 2;
+}
+
+// Font Weight
+.font-weight-light {
+  font-weight: 300;
+}
+
+.font-weight-semibold {
+  font-weight: 500;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+// Widths
+@each $width in $widths {
+  .w-#{$width} {
+    width: #{$width}px !important;
+  }
+  .mw-#{$width} {
+    min-width: #{$width}px !important;
+  }
+}
+
+.shadow {
+  box-shadow: $box-shadow;
+}
+
+.rounded-sm {
+  border-radius: $border-radius-sm;
+}
+
+.rounded-lg {
+  border-radius: $border-radius-lg;
+}
+
+.pull-up-1 {
+  position: relative;
+  top: -1px;
+}
+
+.pull-up-2 {
+  position: relative;
+  top: -2px;
+}
+
+.pull-up-3 {
+  position: relative;
+  top: -3px;
+}
+
+.pull-down-1 {
+  position: relative;
+  top: 1px;
+}
+
+.pull-down-2 {
+  position: relative;
+  top: 2px;
+}
+
+.pull-down-3 {
+  position: relative;
+  top: 3px;
+}

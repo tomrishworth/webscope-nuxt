@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="page-wrapper">
     <Header/>
     <nuxt/>
   </div>
@@ -15,3 +15,11 @@ export default {
 };
 </script>
 
+<style lang="scss" scoped>
+.page-wrapper {
+  max-width: 1540px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #fff;
+}
+</style>

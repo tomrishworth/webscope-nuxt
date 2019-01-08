@@ -1,40 +1,39 @@
 <template>
-  <nuxt-link :to="post.id">
-    <div v-if="post.relationships.field_image.data">
-      <img
-        width="300"
-        :src="'http://dev-webscope-api.pantheonsite.io/' + postImage(post.relationships.field_image.data.id).attributes.uri.url"
-      >
+  <div class="card" style="width: 18rem;">
+    <img
+      class="card-img-top"
+      v-if="post.relationships.field_image.data"
+      width="300"
+      :src="'http://dev-webscope-api.pantheonsite.io/' + postImage.attributes.uri.url"
+    >
+    <div class="card-body">
+      <h5 class="card-title">{{ post.attributes.title }}</h5>
+      <div class="font-weight-bold">{{ postAuthor.attributes.title }}</div>
+      <p class="card-text">{{ post.attributes.body.summary }}</p>
+      <nuxt-link :to="post.attributes.path.alias">Read More</nuxt-link>
     </div>
-    <div>{{ post.attributes.title }}</div>
-    <div>{{ postAuthor(post.relationships.field_author.data.id).attributes.title}}</div>
-  </nuxt-link>
+  </div>
 </template>
 
 <script>
-import axios from "axios";
-
 export default {
   props: ["id"],
   computed: {
     post() {
       return this.$store.getters["postById"](this.id);
     },
-    included() {
-      return this.$store.getters.allPosts.included;
-    }
-  },
-  methods: {
-    postAuthor(value) {
+    postAuthor() {
       return this.included.find(teamMember => {
-        return teamMember.id === value;
+        return teamMember.id === this.post.relationships.field_author.data.id;
       });
     },
-    postImage(value) {
-      console.log(value);
+    postImage() {
       return this.included.find(image => {
-        return image.id === value;
+        return image.id === this.post.relationships.field_image.data.id;
       });
+    },
+    included() {
+      return this.$store.getters.allPosts.included;
     }
   }
 };
